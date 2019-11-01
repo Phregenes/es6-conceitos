@@ -1,3 +1,6 @@
+// exercicio 1
+
+
 class Usuario {
   constructor(email, senha){
     this.usuarios = [];
