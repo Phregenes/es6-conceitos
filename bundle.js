@@ -18,48 +18,59 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var usuario =
+var Usuario =
 /*#__PURE__*/
 function () {
-  function usuario() {
-    _classCallCheck(this, usuario);
+  function Usuario(email, senha) {
+    _classCallCheck(this, Usuario);
 
-    this.data = [];
+    this.usuarios = [];
+    this.email = email;
+    this.senha = senha;
   }
 
-  _createClass(usuario, [{
+  _createClass(Usuario, [{
     key: "add",
     value: function add(data) {
-      this.data.push(data);
-      console.log(this.data);
+      /* Modelo de dados de um usuário 
+        data = {
+          email: "",
+          senha: "",
+        }
+      */
+      this.usuarios.push(data);
+    }
+  }, {
+    key: "isAdmin",
+    value: function isAdmin() {
+      return this.admin === true;
     }
   }]);
 
-  return usuario;
+  return Usuario;
 }();
 
-var admin =
-/*#__PURE__*/
-function (_usuario) {
-  _inherits(admin, _usuario);
+;
 
-  function admin() {
+var Admin =
+/*#__PURE__*/
+function (_Usuario) {
+  _inherits(Admin, _Usuario);
+
+  function Admin(email, senha) {
     var _this;
 
-    _classCallCheck(this, admin);
+    _classCallCheck(this, Admin);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(admin).call(this));
-    _this.nome = 'diego';
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Admin).call(this, email, senha));
+    _this.admin = true;
     return _this;
   }
 
-  return admin;
-}(usuario);
+  return Admin;
+}(Usuario);
 
-var minhaLista = new todoList();
-
-document.getElementById('novotodo').onclick = function () {
-  minhaLista.add('novo todo');
-  minhaLista.mostraUsuario();
-  minhaLista.mostraUsuario();
-};
+var User1 = new Usuario('email@teste.com', 'senha123');
+var Adm1 = new Admin('email@teste.com', 'senha123');
+console.log("User1 é admin? ", User1.isAdmin());
+console.log("Adm1 é admin? ", Adm1.isAdmin());
